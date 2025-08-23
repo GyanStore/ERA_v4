@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Smart Bookmark Organizer</title>
+    <meta name="description" content="This is a test page to verify the Smart Bookmark Organizer extension is working correctly. It contains sample content about AI, machine learning, and system design.">
+    <meta name="keywords" content="AI, machine learning, system design, testing, extension">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .test-section {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .extension-status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="extension-status">
+        <strong>Extension Test Page</strong><br>
+        Look for the 📚 floating button on the right side!
+    </div>
+
+    <h1>🧪 Testing Smart Bookmark Organizer Extension</h1>
+    
+    <p>This page is designed to test the Smart Bookmark Organizer Chrome extension. It contains content about various topics to help verify that the extension can:</p>
+    
+    <ul>
+        <li>Detect and analyze page content</li>
+        <li>Show related bookmarks</li>
+        <li>Auto-categorize content</li>
+        <li>Display the floating panel</li>
+    </ul>
+
+    <div class="test-section">
+        <h2>🤖 Artificial Intelligence & Machine Learning</h2>
+        <p>This section contains content about artificial intelligence, machine learning algorithms, neural networks, and deep learning models. The extension should be able to identify this as AI/ML content and suggest relevant categories.</p>
+        
+        <div class="highlight">
+            <strong>Key AI Terms:</strong> neural networks, deep learning, machine learning algorithms, artificial intelligence models, training data, supervised learning, unsupervised learning, reinforcement learning
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🏗️ System Design & Architecture</h2>
+        <p>This section discusses system design principles, scalable architecture, distributed systems, microservices, and performance optimization. The extension should recognize this as system design content.</p>
+        
+        <div class="highlight">
+            <strong>Key System Design Terms:</strong> microservices architecture, distributed systems, scalability, load balancing, database design, API design, caching strategies, performance optimization
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>💻 Programming & Software Development</h2>
+        <p>This section covers programming concepts, software development methodologies, algorithms, data structures, and best practices. The extension should categorize this as programming content.</p>
+        
+        <div class="highlight">
+            <strong>Key Programming Terms:</strong> algorithms, data structures, software development lifecycle, version control, testing methodologies, code review, debugging techniques, optimization
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🚀 New Technology & Innovation</h2>
+        <p>This section explores emerging technologies, breakthrough innovations, cutting-edge developments, and next-generation solutions. The extension should identify this as new technology content.</p>
+        
+        <div class="highlight">
+            <strong>Key Innovation Terms:</strong> emerging technologies, breakthrough innovations, cutting-edge developments, next-generation solutions, revolutionary approaches, disruptive technology
+        </div>
+    </div>
+
+    <h3>🧪 Testing Instructions:</h3>
+    <ol>
+        <li><strong>Install the Extension:</strong> Load the extension in Chrome's developer mode</li>
+        <li><strong>Look for Floating Button:</strong> You should see a 📚 button on the right side of the page</li>
+        <li><strong>Click the Button:</strong> Click the floating button to see the related bookmarks panel</li>
+        <li><strong>Test Add Bookmark:</strong> Use the "+ Add This Page" button to test bookmark creation</li>
+        <li><strong>Check Categories:</strong> The extension should suggest appropriate categories based on content</li>
+        <li><strong>Test Hide Function:</strong> Use the "Hide Icon" button to hide the floating button</li>
+    </ol>
+
+    <h3>🔍 What to Look For:</h3>
+    <ul>
+        <li>Floating 📚 button appears on the right side</li>
+        <li>Clicking it shows a panel with related bookmarks (if any exist)</li>
+        <li>Panel shows "No related bookmarks found" if none exist</li>
+        <li>Add bookmark functionality works</li>
+        <li>Hide icon functionality works</li>
+        <li>Keyboard shortcuts work (Ctrl+Shift+B)</li>
+    </ul>
+
+    <div class="highlight">
+        <strong>Note:</strong> If you don't see the floating button, make sure:
+        <ul>
+            <li>The extension is properly installed and enabled</li>
+            <li>You're on a webpage (not a chrome:// page)</li>
+            <li>The page has fully loaded</li>
+            <li>Check the browser console for any error messages</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some dynamic content to test content analysis
+        setTimeout(() => {
+            const dynamicSection = document.createElement('div');
+            dynamicSection.className = 'test-section';
+            dynamicSection.innerHTML = `
+                <h2>🔄 Dynamic Content Added</h2>
+                <p>This content was added dynamically to test if the extension can analyze content that changes after page load.</p>
+                <div class="highlight">
+                    <strong>Dynamic Terms:</strong> real-time updates, dynamic content analysis, post-load content, JavaScript-generated content
+                </div>
+            `;
+            document.body.appendChild(dynamicSection);
+        }, 3000);
+
+        // Test if extension is working
+        setTimeout(() => {
+            if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id) {
+                console.log('✅ Extension environment detected');
+            } else {
+                console.log('❌ Extension environment not detected');
+            }
+        }, 1000);
+    </script>
+</body>
+</html> 

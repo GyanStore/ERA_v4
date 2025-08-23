@@ -1,0 +1,444 @@
+/* Content CSS for Smart Bookmark Organizer */
+/* This file ensures the related bookmarks panel is properly styled */
+
+.smart-bookmarks-panel {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 350px !important;
+    max-height: 500px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    border: 1px solid #e0e0e0 !important;
+    display: none !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.smart-bookmarks-panel.visible {
+    display: block !important;
+}
+
+.smart-bookmarks-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 15px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.smart-bookmarks-title {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.smart-bookmarks-close {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px !important;
+    transition: background 0.2s !important;
+}
+
+.smart-bookmarks-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.smart-bookmarks-content {
+    max-height: 350px !important;
+    overflow-y: auto !important;
+}
+
+.smart-bookmarks-list {
+    padding: 15px !important;
+}
+
+.smart-bookmark-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    padding: 12px !important;
+    border: 1px solid #f0f0f0 !important;
+    border-radius: 6px !important;
+    margin-bottom: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    background: #fafafa !important;
+}
+
+.smart-bookmark-item:hover {
+    border-color: #667eea !important;
+    background: #f8f9ff !important;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1) !important;
+}
+
+.smart-bookmark-icon {
+    width: 16px !important;
+    height: 16px !important;
+    background: #667eea !important;
+    border-radius: 2px !important;
+    margin-right: 10px !important;
+    margin-top: 2px !important;
+    flex-shrink: 0 !important;
+}
+
+.smart-bookmark-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.smart-bookmark-title {
+    font-weight: 600 !important;
+    color: #333 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+    font-size: 13px !important;
+}
+
+.smart-bookmark-url {
+    color: #666 !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 4px !important;
+}
+
+.smart-bookmark-category {
+    background: #667eea !important;
+    color: white !important;
+    padding: 2px 6px !important;
+    border-radius: 10px !important;
+    font-size: 10px !important;
+    display: inline-block !important;
+    margin-bottom: 4px !important;
+}
+
+.smart-bookmark-relevance {
+    font-size: 10px !important;
+    color: #666 !important;
+    font-style: italic !important;
+}
+
+.smart-bookmarks-empty {
+    text-align: center !important;
+    padding: 40px 20px !important;
+    color: #666 !important;
+}
+
+.smart-bookmarks-empty p {
+    margin: 0 0 8px 0 !important;
+    font-size: 14px !important;
+}
+
+.smart-bookmarks-hint {
+    font-size: 12px !important;
+    color: #999 !important;
+}
+
+.smart-bookmarks-footer {
+    padding: 15px !important;
+    border-top: 1px solid #f0f0f0 !important;
+    background: #fafafa !important;
+    display: flex !important;
+    gap: 10px !important;
+}
+
+.smart-bookmarks-add,
+.smart-bookmarks-hide {
+    flex: 1 !important;
+    padding: 10px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+}
+
+.smart-bookmarks-add {
+    background: #667eea !important;
+    color: white !important;
+}
+
+.smart-bookmarks-add:hover {
+    background: #5a6fd8 !important;
+}
+
+.smart-bookmarks-hide {
+    background: #f44336 !important;
+    color: white !important;
+}
+
+.smart-bookmarks-hide:hover {
+    background: #d32f2f !important;
+}
+
+.smart-bookmarks-toggle {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    color: white !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    z-index: 9999 !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+    transition: all 0.2s !important;
+    display: block !important; /* Always visible by default */
+}
+
+.smart-bookmarks-toggle:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+.smart-bookmarks-toggle.hidden {
+    display: none !important; /* Hide when this class is added */
+}
+
+/* Hide Message Styles */
+.smart-bookmarks-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #667eea;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    font-family: inherit;
+    max-width: 350px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.smart-bookmarks-message .message-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.smart-bookmarks-message .message-text {
+    flex: 1;
+}
+
+.smart-bookmarks-message .message-text span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.smart-bookmarks-message .message-text small {
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.smart-bookmarks-message .message-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.smart-bookmarks-message .message-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.message-content {
+    padding: 20px !important;
+    text-align: center !important;
+}
+
+.message-content p {
+    margin: 0 0 15px 0 !important;
+    color: #333 !important;
+    font-size: 14px !important;
+}
+
+.message-content button {
+    background: #667eea !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+}
+
+.message-content button:hover {
+    background: #5a6fd8 !important;
+}
+
+/* Duplicate Message Styles */
+.smart-bookmarks-duplicate {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    z-index: 10001;
+    font-family: inherit;
+    max-width: 400px;
+    animation: duplicateBounce 0.6s ease-out;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.duplicate-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.duplicate-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    animation: iconPulse 2s infinite;
+}
+
+.duplicate-text {
+    flex: 1;
+}
+
+.duplicate-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.duplicate-details {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.duplicate-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.duplicate-edit {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+}
+
+.duplicate-edit:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.duplicate-close {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.duplicate-close:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+@keyframes duplicateBounce {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .smart-bookmarks-panel {
+        width: 90% !important;
+        right: 5% !important;
+        left: 5% !important;
+    }
+    
+    .smart-bookmarks-footer {
+        flex-direction: column !important;
+    }
+    
+    .smart-bookmarks-toggle {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 18px !important;
+    }
+} 

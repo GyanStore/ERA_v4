@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .highlight {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+        .test-info {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h3>🧪 Test Instructions:</h3>
+        <ol>
+            <li><strong>Load this page</strong> in Chrome with the extension enabled</li>
+            <li><strong>Look for the floating 📚 button</strong> on the right side of the page</li>
+            <li><strong>Click the floating button</strong> to see related bookmarks</li>
+            <li><strong>Check the console</strong> for debug logs</li>
+        </ol>
+    </div>
+
+    <h1>System Design Fundamentals</h1>
+    
+    <p>This is a comprehensive guide to system design principles and best practices used in modern software architecture.</p>
+    
+    <div class="highlight">
+        <h2>Key Concepts in System Design</h2>
+        <p>System design involves understanding how to architect scalable, reliable, and maintainable software systems. It encompasses various aspects including:</p>
+        <ul>
+            <li><strong>Scalability:</strong> The ability to handle increased load</li>
+            <li><strong>Reliability:</strong> Ensuring the system works correctly under various conditions</li>
+            <li><strong>Availability:</strong> Keeping the system operational</li>
+            <li><strong>Performance:</strong> Optimizing response times and throughput</li>
+        </ul>
+    </div>
+
+    <h2>Architecture Patterns</h2>
+    <p>Modern system design relies on several key architectural patterns:</p>
+    
+    <h3>1. Microservices Architecture</h3>
+    <p>Microservices break down applications into smaller, independent services that can be developed, deployed, and scaled independently. This approach offers:</p>
+    <ul>
+        <li>Better fault isolation</li>
+        <li>Independent scaling</li>
+        <li>Technology diversity</li>
+        <li>Easier maintenance</li>
+    </ul>
+
+    <h3>2. Event-Driven Architecture</h3>
+    <p>Event-driven systems use events to trigger and communicate between decoupled services. This pattern is excellent for:</p>
+    <ul>
+        <li>Asynchronous processing</li>
+        <li>Loose coupling</li>
+        <li>Scalability</li>
+        <li>Real-time updates</li>
+    </ul>
+
+    <h3>3. Load Balancing</h3>
+    <p>Load balancers distribute incoming requests across multiple servers to ensure:</p>
+    <ul>
+        <li>High availability</li>
+        <li>Better performance</li>
+        <li>Fault tolerance</li>
+        <li>Scalability</li>
+    </ul>
+
+    <h2>Database Design Considerations</h2>
+    <p>Database design is crucial in system architecture:</p>
+    
+    <h3>Relational vs NoSQL</h3>
+    <p>Choose between relational and NoSQL databases based on:</p>
+    <ul>
+        <li>Data structure requirements</li>
+        <li>Scalability needs</li>
+        <li>Consistency requirements</li>
+        <li>Query patterns</li>
+    </ul>
+
+    <h3>Data Partitioning</h3>
+    <p>Effective data partitioning strategies include:</p>
+    <ul>
+        <li>Horizontal partitioning (sharding)</li>
+        <li>Vertical partitioning</li>
+        <li>Functional partitioning</li>
+    </ul>
+
+    <div class="highlight">
+        <h2>Performance Optimization</h2>
+        <p>System performance can be optimized through:</p>
+        <ul>
+            <li><strong>Caching:</strong> Redis, Memcached, CDN</li>
+            <li><strong>Database optimization:</strong> Indexing, query optimization</li>
+            <li><strong>Asynchronous processing:</strong> Message queues, background jobs</li>
+            <li><strong>Content delivery:</strong> CDN, edge computing</li>
+        </ul>
+    </div>
+
+    <h2>Security Considerations</h2>
+    <p>Security must be built into the system design:</p>
+    <ul>
+        <li>Authentication and authorization</li>
+        <li>Data encryption</li>
+        <li>Input validation</li>
+        <li>Rate limiting</li>
+        <li>Audit logging</li>
+    </ul>
+
+    <h2>Monitoring and Observability</h2>
+    <p>Effective monitoring includes:</p>
+    <ul>
+        <li>Application performance monitoring (APM)</li>
+        <li>Infrastructure monitoring</li>
+        <li>Log aggregation</li>
+        <li>Distributed tracing</li>
+        <li>Alerting systems</li>
+    </ul>
+
+    <div class="test-info">
+        <h3>🔍 Expected Behavior:</h3>
+        <p>If you have bookmarks with categories containing keywords like "system design", "architecture", "scalability", etc., they should appear in the floating panel when you click the 📚 button.</p>
+        <p><strong>Check the console for logs like:</strong></p>
+        <ul>
+            <li>🔍 Content script: Analyzing page: System Design Test Page</li>
+            <li>📚 Found bookmarks: X</li>
+            <li>📁 Found categories: X</li>
+            <li>✅ Found related bookmarks: X</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add some JavaScript to make the page more interactive
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Test page loaded - System Design Fundamentals');
+            console.log('📚 Look for the floating bookmark icon on the right side');
+            console.log('🔍 This page contains keywords: system design, architecture, scalability, microservices, database, performance, security, monitoring');
+        });
+    </script>
+</body>
+</html> 

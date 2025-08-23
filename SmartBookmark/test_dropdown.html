@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dropdown Functionality</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .bookmark-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: white;
+            gap: 12px;
+        }
+        
+        .bookmark-icon {
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        
+        .bookmark-info {
+            flex: 1;
+        }
+        
+        .bookmark-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .bookmark-url {
+            font-size: 12px;
+            color: #666;
+            font-family: monospace;
+        }
+        
+        /* Action Bar - Horizontal action buttons */
+        .bookmark-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 100001;
+        }
+        
+        .bookmark-item:hover .bookmark-actions {
+            opacity: 1;
+        }
+        
+        /* Individual action buttons */
+        .bookmark-action-btn {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 6px 8px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            color: #6c757d;
+            min-width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .bookmark-action-btn:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+        
+        .bookmark-action-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Specific action button styles */
+        .bookmark-action-toggle {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-color: #28a745;
+        }
+        
+        .bookmark-action-toggle:hover {
+            background: linear-gradient(135deg, #218838, #1ea085);
+        }
+        
+        .bookmark-action-notes {
+            background: linear-gradient(135deg, #ffc107, #fd7e14);
+            color: white;
+            border-color: #ffc107;
+        }
+        
+        .bookmark-action-notes:hover {
+            background: linear-gradient(135deg, #e0a800, #e8590c);
+        }
+        
+        .bookmark-action-edit {
+            background: linear-gradient(135deg, #17a2b8, #6f42c1);
+            color: white;
+            border-color: #17a2b8;
+        }
+        
+        .bookmark-action-edit:hover {
+            background: linear-gradient(135deg, #138496, #5a32a3);
+        }
+        
+        .bookmark-action-move {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            border-color: #6c757d;
+        }
+        
+        .bookmark-action-move:hover {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+        
+        .test-instructions {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .test-instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        
+        .test-instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .test-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .debug-info {
+            background: #f3e5f5;
+            border: 1px solid #9c27b0;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="header">
+            <h1>🧪 Test Dropdown Functionality</h1>
+            <p>Testing the Smart Bookmarks dropdown menu</p>
+        </div>
+        
+        <div class="content">
+            <div class="test-instructions">
+                <h3>📋 Test Instructions:</h3>
+                <ol>
+                    <li>Hover over any bookmark below to see the action buttons</li>
+                    <li>Click any of the colored action buttons (▼, 📝, ✏️, 📁)</li>
+                    <li>Verify the buttons are visible and clickable</li>
+                    <li>Check the debug info below for logs</li>
+                </ol>
+            </div>
+            
+            <h3>📚 Sample Bookmarks:</h3>
+            
+            <div class="bookmark-item">
+                <div class="bookmark-icon"></div>
+                <div class="bookmark-info">
+                    <div class="bookmark-title">System Design Roadmap</div>
+                    <div class="bookmark-url">https://roadmap.sh/system-design</div>
+                </div>
+                <div class="bookmark-actions">
+                    <button class="bookmark-action-btn bookmark-action-toggle" title="Toggle Details" data-action="toggle" data-bookmark-id="1">▼</button>
+                    <button class="bookmark-action-btn bookmark-action-notes" title="Generate Notes" data-action="notes" data-bookmark-id="1">📝</button>
+                    <button class="bookmark-action-btn bookmark-action-edit" title="Edit Bookmark" data-action="edit" data-bookmark-id="1">✏️</button>
+                    <button class="bookmark-action-btn bookmark-action-move" title="Move Bookmark" data-action="move" data-bookmark-id="1">📁</button>
+                </div>
+            </div>
+            
+            <div class="bookmark-item">
+                <div class="bookmark-icon"></div>
+                <div class="bookmark-info">
+                    <div class="bookmark-title">Load Balancing Guide</div>
+                    <div class="bookmark-url">https://www.karanpratapsingh.com/courses/system-design</div>
+                </div>
+                <div class="bookmark-actions">
+                    <button class="bookmark-action-btn bookmark-action-toggle" title="Toggle Details" data-action="toggle" data-bookmark-id="2">▼</button>
+                    <button class="bookmark-action-btn bookmark-action-notes" title="Generate Notes" data-action="notes" data-bookmark-id="2">📝</button>
+                    <button class="bookmark-action-btn bookmark-action-edit" title="Edit Bookmark" data-action="edit" data-bookmark-id="2">✏️</button>
+                    <button class="bookmark-action-btn bookmark-action-move" title="Move Bookmark" data-action="move" data-bookmark-id="2">📁</button>
+                </div>
+            </div>
+            
+            <div class="bookmark-item">
+                <div class="bookmark-icon"></div>
+                <div class="bookmark-info">
+                    <div class="bookmark-title">Grokking System Design</div>
+                    <div class="bookmark-url">https://www.designgurus.io/course/grokking-system-design</div>
+                </div>
+                <div class="bookmark-actions">
+                    <button class="bookmark-action-btn bookmark-action-toggle" title="Toggle Details" data-action="toggle" data-bookmark-id="3">▼</button>
+                    <button class="bookmark-action-btn bookmark-action-notes" title="Generate Notes" data-action="notes" data-bookmark-id="3">📝</button>
+                    <button class="bookmark-action-btn bookmark-action-edit" title="Edit Bookmark" data-action="edit" data-bookmark-id="3">✏️</button>
+                    <button class="bookmark-action-btn bookmark-action-move" title="Move Bookmark" data-action="move" data-bookmark-id="3">📁</button>
+                </div>
+            </div>
+            
+            <div class="bookmark-item">
+                <div class="bookmark-icon"></div>
+                <div class="bookmark-info">
+                    <div class="bookmark-title">Load Balancing Guide</div>
+                    <div class="bookmark-url">https://example.com/load-balancing</div>
+                </div>
+                <div class="bookmark-actions">
+                    <button class="bookmark-action-menu" data-bookmark-id="2">⋯</button>
+                    <div class="bookmark-action-dropdown">
+                        <button data-action="toggle" data-bookmark-id="2">▼ Show Details</button>
+                        <button data-action="notes" data-bookmark-id="2">📝 Generate Notes</button>
+                        <button data-action="edit" data-bookmark-id="2">✏️ Edit</button>
+                        <button data-action="move" data-bookmark-id="2">📁 Move</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bookmark-item">
+                <div class="bookmark-icon"></div>
+                <div class="bookmark-info">
+                    <div class="bookmark-title">Microservices Architecture</div>
+                    <div class="bookmark-url">https://example.com/microservices</div>
+                </div>
+                <div class="bookmark-actions">
+                    <button class="bookmark-action-menu" data-bookmark-id="3">⋯</button>
+                    <div class="bookmark-action-dropdown">
+                        <button data-action="toggle" data-bookmark-id="3">▼ Show Details</button>
+                        <button data-action="notes" data-bookmark-id="3">📝 Generate Notes</button>
+                        <button data-action="edit" data-bookmark-id="3">✏️ Edit</button>
+                        <button data-action="move" data-bookmark-id="3">📁 Move</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="debug-info">
+                <strong>🐛 Debug Console:</strong><br>
+                <div id="debug-output">Click a bookmark action menu to see debug info...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test the dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const debugOutput = document.getElementById('debug-output');
+            
+            function log(message) {
+                const timestamp = new Date().toLocaleTimeString();
+                debugOutput.innerHTML += `<br>[${timestamp}] ${message}`;
+                console.log(message);
+            }
+            
+            log('🚀 Test page loaded');
+            
+            // Handle action button clicks
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.bookmark-action-btn')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const button = e.target.closest('.bookmark-action-btn');
+                    const action = button.dataset.action;
+                    const bookmarkId = button.dataset.bookmarkId;
+                    
+                    log(`🎯 Action button clicked: ${action} for bookmark ID: ${bookmarkId}`);
+                    
+                    // Handle different actions
+                    try {
+                        switch (action) {
+                            case 'toggle':
+                                log('🔄 Toggling bookmark details...');
+                                break;
+                            case 'notes':
+                                log('📝 Opening notes generation...');
+                                // Simulate opening notes modal
+                                log('📋 Notes modal would open here (requires full extension)');
+                                log('🔧 To test notes generation, load the extension in Chrome');
+                                break;
+                            case 'edit':
+                                log('✏️ Opening edit modal...');
+                                break;
+                            case 'move':
+                                log('📁 Opening move modal...');
+                                break;
+                            default:
+                                log('⚠️ Unknown action: ' + action);
+                        }
+                    } catch (error) {
+                        log('❌ Error executing action: ' + error);
+                    }
+                    
+                    return;
+                }
+            });
+            
+            log('✅ Event listeners setup complete');
+        });
+    </script>
+</body>
+</html> 

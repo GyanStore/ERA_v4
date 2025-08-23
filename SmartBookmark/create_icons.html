@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator for Smart Bookmark Organizer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .icon-preview {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        .icon-display {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            background: white;
+        }
+        .icon-16 { width: 16px; height: 16px; }
+        .icon-48 { width: 48px; height: 48px; }
+        .icon-128 { width: 128px; height: 128px; }
+        .download-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .download-btn:hover {
+            background: #5a6fd8;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Icon Generator for Smart Bookmark Organizer</h1>
+        
+        <div class="instructions">
+            <h3>How to Use This Tool:</h3>
+            <ol>
+                <li>Click "Generate Icons" to create the required icon files</li>
+                <li>Download each icon by clicking the download buttons</li>
+                <li>Save the files with the exact names: <code>icon16.png</code>, <code>icon48.png</code>, and <code>icon128.png</code></li>
+                <li>Place these files in your <code>Segregate Bookmarks</code> folder</li>
+                <li>Now you can load the extension in Chrome!</li>
+            </ol>
+        </div>
+
+        <div class="icon-preview">
+            <div class="icon-item">
+                <h3>16x16 Icon</h3>
+                <canvas id="canvas16" class="icon-display icon-16"></canvas>
+                <br>
+                <button class="download-btn" onclick="downloadIcon(16)">Download icon16.png</button>
+            </div>
+            
+            <div class="icon-item">
+                <h3>48x48 Icon</h3>
+                <canvas id="canvas48" class="icon-display icon-48"></canvas>
+                <br>
+                <button class="download-btn" onclick="downloadIcon(48)">Download icon48.png</button>
+            </div>
+            
+            <div class="icon-item">
+                <h3>128x128 Icon</h3>
+                <canvas id="canvas128" class="icon-display icon-128"></canvas>
+                <br>
+                <button class="download-btn" onclick="downloadIcon(128)">Download icon128.png</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button onclick="generateAllIcons()" style="background: #4caf50; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; cursor: pointer;">
+                🎨 Generate All Icons
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function generateIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add rounded corners
+            ctx.globalCompositeOperation = 'destination-in';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, size * 0.2);
+            ctx.fill();
+            ctx.globalCompositeOperation = 'source-over';
+            
+            // Add bookmark icon
+            ctx.fillStyle = 'white';
+            const iconSize = size * 0.6;
+            const iconX = (size - iconSize) / 2;
+            const iconY = (size - iconSize) / 2;
+            
+            // Draw bookmark shape
+            ctx.beginPath();
+            ctx.moveTo(iconX, iconY);
+            ctx.lineTo(iconX + iconSize * 0.3, iconY + iconSize * 0.4);
+            ctx.lineTo(iconX + iconSize * 0.5, iconY + iconSize * 0.2);
+            ctx.lineTo(iconX + iconSize * 0.7, iconY + iconSize * 0.4);
+            ctx.lineTo(iconX + iconSize, iconY);
+            ctx.lineTo(iconX + iconSize, iconY + iconSize);
+            ctx.lineTo(iconX, iconY + iconSize);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Add some shine
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.beginPath();
+            ctx.moveTo(iconX + iconSize * 0.1, iconY + iconSize * 0.1);
+            ctx.lineTo(iconX + iconSize * 0.3, iconY + iconSize * 0.3);
+            ctx.lineTo(iconX + iconSize * 0.1, iconY + iconSize * 0.5);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function generateAllIcons() {
+            generateIcon(16);
+            generateIcon(48);
+            generateIcon(128);
+        }
+        
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate icons when page loads
+        window.addEventListener('load', generateAllIcons);
+        
+        // Add roundRect polyfill for older browsers
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.lineTo(x + width - radius, y);
+                this.quadraticCurveTo(x + width, y, x + width, y + radius);
+                this.lineTo(x + width, y + height - radius);
+                this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                this.lineTo(x + radius, y + height);
+                this.quadraticCurveTo(x, y + height, x, y + height - radius);
+                this.lineTo(x, y + radius);
+                this.quadraticCurveTo(x, y, x + radius, y);
+                this.closePath();
+            };
+        }
+    </script>
+</body>
+</html> 

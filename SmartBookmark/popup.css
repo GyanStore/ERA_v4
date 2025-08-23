@@ -1,0 +1,1327 @@
+/* Modern UI Polish - Professional Design */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-width: 320px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: visible;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Header - Modern gradient with depth */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-shadow: 0 2px 12px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: visible;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+    pointer-events: none;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    flex: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.search-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+#searchInput {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 11px;
+    width: 130px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+#refreshDataBtn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#refreshDataBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Tab Styling - Colorful and Distinct */
+.tabs {
+    display: flex;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 2px solid #e9ecef;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    padding: 4px 4px 0 4px;
+    gap: 2px;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tab:hover {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+    color: #495057;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    border-color: #c7d2fe;
+}
+
+.tab:hover::before {
+    opacity: 1;
+}
+
+/* Active Tab Styling */
+.tab.active {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    color: #667eea;
+    border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    transform: translateY(-1px);
+    position: relative;
+    z-index: 2;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+/* Individual Tab Color Themes */
+.tab:nth-child(1) { /* Categories */
+    border-top: 3px solid #667eea;
+}
+
+.tab:nth-child(1):hover {
+    border-top-color: #5a6fd8;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+}
+
+.tab:nth-child(1).active {
+    border-top-color: #667eea;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+}
+
+.tab:nth-child(2) { /* Recent */
+    border-top: 3px solid #28a745;
+}
+
+.tab:nth-child(2):hover {
+    border-top-color: #218838;
+    background: linear-gradient(135deg, #f0fff4 0%, #e8f8f0 100%);
+}
+
+.tab:nth-child(2).active {
+    border-top-color: #28a745;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
+}
+
+.tab:nth-child(3) { /* Related */
+    border-top: 3px solid #e67e22;
+}
+
+.tab:nth-child(3):hover {
+    border-top-color: #d35400;
+    background: linear-gradient(135deg, #fff8f0 0%, #f8f0e8 100%);
+}
+
+.tab:nth-child(3).active {
+    border-top-color: #e67e22;
+    background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+}
+
+.tab:nth-child(4) { /* Settings */
+    border-top: 3px solid #9b59b6;
+}
+
+.tab:nth-child(4):hover {
+    border-top-color: #8e44ad;
+    background: linear-gradient(135deg, #f8f0ff 0%, #f0e8f8 100%);
+}
+
+.tab:nth-child(4).active {
+    border-top-color: #9b59b6;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f0ff 100%);
+}
+
+/* Tab Content Indicators */
+.tab::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.tab:nth-child(1)::before { /* Categories */
+    background: #667eea;
+}
+
+.tab:nth-child(2)::before { /* Recent */
+    background: #28a745;
+}
+
+.tab:nth-child(3)::before { /* Related */
+    background: #e67e22;
+}
+
+.tab:nth-child(4)::before { /* Settings */
+    background: #9b59b6;
+}
+
+.tab:hover::before {
+    transform: scale(1.2);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.tab.active::before {
+    transform: scale(1.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Tab Text Enhancement */
+.tab span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Tab Icons (if you want to add them later) */
+.tab-icon {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.tab.active .tab-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Tab Count Badges (for future use) */
+.tab-count {
+    background: rgba(255, 255, 255, 0.8);
+    color: #6c757d;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+    border: 1px solid #e9ecef;
+}
+
+.tab.active .tab-count {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+/* Tab Hover Effects */
+.tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.tab:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s ease;
+}
+
+/* Tab Focus States */
+.tab:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Tab Animation on Load */
+.tab {
+    animation: tabSlideIn 0.3s ease-out;
+}
+
+.tab:nth-child(1) { animation-delay: 0.1s; }
+.tab:nth-child(2) { animation-delay: 0.2s; }
+.tab:nth-child(3) { animation-delay: 0.3s; }
+.tab:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes tabSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content - Enhanced background */
+.content {
+    padding: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Category Headers - Modern cards */
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 10px;
+    margin: 6px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.category-header:hover {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.category-header:hover::before {
+    opacity: 1;
+}
+
+.category-header h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #495057;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.category-count {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.expand-icon {
+    font-size: 12px;
+    color: #6c757d;
+    transition: all 0.2s ease;
+    margin-left: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.category-header.expanded .expand-icon {
+    transform: rotate(90deg);
+    color: #667eea;
+}
+
+/* Bookmark Items - Modern with depth */
+.bookmark-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 3px 0;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative;
+    gap: 8px;
+    min-height: 36px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.bookmark-item:hover {
+    background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+    transform: translateX(3px) translateY(-1px);
+    border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+}
+
+.bookmark-item:active {
+    transform: translateX(1px) translateY(0);
+}
+
+.bookmark-item.expanded {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+    border-left: 4px solid #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+}
+
+/* Bookmark Icon - Modern with gradient */
+.bookmark-icon {
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 3px;
+    flex-shrink: 0;
+    opacity: 0.8;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.bookmark-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+}
+
+.bookmark-item:hover .bookmark-icon {
+    opacity: 1;
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Bookmark Info - Enhanced typography */
+.bookmark-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bookmark-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.bookmark-url-mini {
+    font-size: 10px;
+    color: #7f8c8d;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Action Bar - Horizontal action buttons */
+.bookmark-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 100001;
+    /* Ensure actions are above other elements */
+}
+
+.bookmark-item:hover .bookmark-actions {
+    opacity: 1;
+}
+
+/* Individual action buttons */
+.bookmark-action-btn {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    color: #6c757d;
+    min-width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.bookmark-action-btn:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.bookmark-action-btn:active {
+    transform: translateY(0);
+}
+
+/* Specific action button styles */
+.bookmark-action-toggle {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border-color: #28a745;
+}
+
+.bookmark-action-toggle:hover {
+    background: linear-gradient(135deg, #218838, #1ea085);
+}
+
+.bookmark-action-notes {
+    background: linear-gradient(135deg, #ffc107, #fd7e14);
+    color: white;
+    border-color: #ffc107;
+}
+
+.bookmark-action-notes:hover {
+    background: linear-gradient(135deg, #e0a800, #e8590c);
+}
+
+.bookmark-action-edit {
+    background: linear-gradient(135deg, #17a2b8, #6f42c1);
+    color: white;
+    border-color: #17a2b8;
+}
+
+.bookmark-action-edit:hover {
+    background: linear-gradient(135deg, #138496, #5a32a3);
+}
+
+.bookmark-action-move {
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    border-color: #6c757d;
+}
+
+.bookmark-action-move:hover {
+    background: linear-gradient(135deg, #5a6268, #343a40);
+}
+
+.bookmark-action-delete {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border-color: #dc3545;
+}
+
+.bookmark-action-delete:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    transform: scale(1.05);
+}
+
+/* Bookmark actions are now styled above with the new action bar design */
+
+/* Enhanced animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    border-radius: 3px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5a6fd8, #6a4c93);
+}
+
+/* Related bookmark actions styling */
+.related-bookmark-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 100001;
+}
+
+.related-bookmark-item:hover .related-bookmark-actions {
+    opacity: 1;
+}
+
+.related-bookmark-actions .bookmark-action-btn {
+    min-width: 24px;
+    height: 24px;
+    font-size: 10px;
+    padding: 4px 6px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal.active,
+.modal[style*="display: block"] {
+    display: block !important;
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.close {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 12px;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Notes Generation Specific Styles */
+.notes-generation-confirmation,
+.notes-generation-progress,
+.notes-generation-success,
+.notes-generation-error {
+    text-align: center;
+}
+
+.notes-generation-error .error-details {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.notes-generation-error .error-details p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.notes-generation-error .error-details strong {
+    color: #495057;
+}
+
+.notes-generation-confirmation h4,
+.notes-generation-progress h4,
+.notes-generation-success h4,
+.notes-generation-error h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.azure-credentials-info {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: left;
+    border-left: 4px solid #667eea;
+}
+
+.azure-credentials-info h5 {
+    margin: 0 0 8px 0;
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.azure-credentials-info p {
+    margin: 0;
+    color: #495057;
+    font-size: 13px;
+}
+
+.progress-steps {
+    margin: 20px 0;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.step.active {
+    opacity: 1;
+    background: #e8f5e8;
+    border-left: 4px solid #28a745;
+}
+
+.step.completed {
+    opacity: 1;
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.step-number {
+    background: #667eea;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.step.completed .step-number {
+    background: #28a745;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.notes-preview {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: left;
+}
+
+.notes-content {
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.form-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Success and Error Messages */
+.success-message,
+.error-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000001;
+    font-family: inherit;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border-left: 4px solid #1e7e34;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border-left: 4px solid #bd2130;
+}
+
+.success-message .message-icon,
+.error-message .message-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.success-message .message-text,
+.error-message .message-text {
+    flex: 1;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.success-message .message-close,
+.error-message .message-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.success-message .message-close:hover,
+.error-message .message-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ===== MISSING TAB PANE CSS - This fixes the tab switching issue! ===== */
+
+/* Tab Pane Styling */
+.tab-pane {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    padding: 20px;
+    min-height: 300px;
+    background: #ffffff;
+    border-radius: 0 0 8px 8px;
+}
+
+.tab-pane.active {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+    animation: tabPaneSlideIn 0.3s ease-out;
+}
+
+@keyframes tabPaneSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab Content Container */
+.tab-content {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure proper z-index for popup content */
+.container {
+    position: relative;
+    z-index: 100000;
+}
+
+/* Fix for web page content overlapping */
+body {
+    position: relative;
+    z-index: 100000;
+}
+
+/* Related bookmarks specific styling */
+.related-content {
+    padding: 20px;
+}
+
+.related-content h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.related-content p {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Recent bookmarks specific styling */
+.bookmark-list {
+    padding: 20px;
+}
+
+/* Settings specific styling */
+.settings-content {
+    padding: 20px;
+}
+
+.settings-content h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.setting-item {
+    margin-bottom: 20px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.setting-item input,
+.setting-item select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.setting-item small {
+    display: block;
+    margin-top: 5px;
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.save-settings-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.save-settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Configuration Loading Section */
+.config-loading-section {
+    border-top: 1px solid #e9ecef;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.config-loading-section h5 {
+    margin: 0 0 10px 0;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.config-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.config-buttons .btn {
+    font-size: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    color: #212529;
+    border: none;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #e0a800, #d39e00);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    border: none;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #138496, #117a8b);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #20c997, #1e7e34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Delete Button Styling */
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Delete Modal Specific Styling */
+.bookmark-preview {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 4px solid #667eea;
+}
+
+.bookmark-preview p {
+    margin: 5px 0;
+    color: #495057;
+}
+
+.warning-message {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.warning-message p {
+    margin: 0;
+    color: #856404;
+    font-weight: 600;
+}
+
+/* Modal Actions for Delete */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    min-width: 120px;
+} 

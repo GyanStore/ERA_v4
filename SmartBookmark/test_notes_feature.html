@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test AI Notes Generation - Smart Bookmarks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .test-instructions {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .test-instructions h3 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        .test-instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .test-instructions li {
+            margin: 8px 0;
+        }
+        .content-section {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .content-section h3 {
+            color: #28a745;
+            border-bottom: 1px solid #28a745;
+            padding-bottom: 8px;
+        }
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .success h4 {
+            color: #155724;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test AI Notes Generation Feature</h1>
+    
+    <div class="test-section">
+        <h2>🎯 Feature Overview</h2>
+        <p>This test page is designed to verify the complete AI Notes Generation feature in the Smart Bookmarks extension. The feature allows users to:</p>
+        <ul>
+            <li>Configure Azure OpenAI API credentials</li>
+            <li>Generate comprehensive study notes from bookmarked websites</li>
+            <li>Save notes as Markdown files to the Downloads folder</li>
+            <li>View and manage generated notes</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 Test Instructions</h2>
+        
+        <div class="test-instructions">
+            <h3>Phase 1: Extension Setup</h3>
+            <ol>
+                <li>Reload the Smart Bookmarks extension (click the 🔄 reload button)</li>
+                <li>Open the extension popup</li>
+                <li>Go to the "Settings" tab</li>
+                <li>Verify you see the "Azure OpenAI Configuration" section</li>
+                <li>Check that the status shows "Not configured"</li>
+            </ol>
+        </div>
+
+        <div class="test-instructions">
+            <h3>Phase 2: Azure Configuration</h3>
+            <ol>
+                <li>Click "Configure Azure OpenAI" button</li>
+                <li>Fill in your Azure OpenAI credentials:
+                    <ul>
+                        <li><strong>API Key:</strong> Your Azure OpenAI API key</li>
+                        <li><strong>Endpoint:</strong> Your Azure OpenAI endpoint URL</li>
+                        <li><strong>Model:</strong> Select GPT-4 or GPT-3.5 Turbo</li>
+                        <li><strong>Deployment:</strong> Your deployment name</li>
+                    </ul>
+                </li>
+                <li>Click "Test Connection" to verify credentials</li>
+                <li>Click "Save Settings" if test is successful</li>
+                <li>Verify the status now shows "Configured (Model Name)"</li>
+            </ol>
+        </div>
+
+        <div class="test-instructions">
+            <h3>Phase 3: Generate Notes</h3>
+            <ol>
+                <li>Go to "Categories" tab</li>
+                <li>Expand a category with bookmarks</li>
+                <li>Look for the 📝 button on any bookmark</li>
+                <li>Click the 📝 button</li>
+                <li>Verify the confirmation modal shows:
+                    <ul>
+                        <li>Bookmark title and URL</li>
+                        <li>Azure configuration details</li>
+                        <li>What the process will do</li>
+                    </ul>
+                </li>
+                <li>Click "Generate Notes"</li>
+            </ol>
+        </div>
+
+        <div class="test-instructions">
+            <h3>Phase 4: Monitor Progress</h3>
+            <ol>
+                <li>Watch the progress modal with 3 steps:
+                    <ul>
+                        <li>Step 1: Scraping webpage content</li>
+                        <li>Step 2: Generating AI notes</li>
+                        <li>Step 3: Saving to Downloads folder</li>
+                    </ul>
+                </li>
+                <li>Verify progress bar fills up</li>
+                <li>Check that steps change from "active" to "completed"</li>
+            </ol>
+        </div>
+
+        <div class="test-instructions">
+            <h3>Phase 5: Verify Results</h3>
+            <ol>
+                <li>After completion, verify success message appears</li>
+                <li>Check the file path shown</li>
+                <li>Click "Open Notes File" to verify file opens</li>
+                <li>Check your Downloads folder for the generated file</li>
+                <li>Verify the file contains well-structured study notes</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Technical Test Cases</h2>
+        
+        <div class="content-section">
+            <h3>Test Case 1: Azure Configuration Validation</h3>
+            <p><strong>Expected:</strong> Form validation prevents saving incomplete configurations</p>
+            <p><strong>Test:</strong> Try to save with missing API key, endpoint, or deployment name</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Test Case 2: Connection Testing</h3>
+            <p><strong>Expected:</strong> Test button shows "Testing..." and validates credentials</p>
+            <p><strong>Test:</strong> Use valid and invalid credentials to test error handling</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Test Case 3: Content Scraping</h3>
+            <p><strong>Expected:</strong> Extension can extract text, headings, and metadata from this page</p>
+            <p><strong>Test:</strong> Generate notes from this test page to verify scraping works</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Test Case 4: AI Note Generation</h3>
+            <p><strong>Expected:</strong> Azure OpenAI generates structured study notes</p>
+            <p><strong>Test:</strong> Verify notes include key concepts, examples, and study tips</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Test Case 5: File Saving</h3>
+            <p><strong>Expected:</strong> Notes saved as Markdown file in Downloads folder</p>
+            <p><strong>Test:</strong> Check file format, naming convention, and content</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>📚 Sample Content for Testing</h2>
+        
+        <div class="content-section">
+            <h3>System Design Concepts</h3>
+            <p>This section contains various system design concepts that can be used to test the AI note generation feature.</p>
+            
+            <h4>Load Balancing</h4>
+            <p>Load balancing is a technique used to distribute incoming network traffic across multiple servers or resources. This helps improve application availability, reliability, and performance by ensuring no single server becomes overwhelmed.</p>
+            
+            <h4>Database Sharding</h4>
+            <p>Database sharding is a database architecture pattern where data is horizontally partitioned across multiple databases or database instances. Each partition, or shard, contains a subset of the data, allowing for better performance and scalability.</p>
+            
+            <h4>Microservices Architecture</h4>
+            <p>Microservices is an architectural style that structures an application as a collection of loosely coupled, independently deployable services. Each service is responsible for a specific business capability and can be developed, deployed, and scaled independently.</p>
+        </div>
+
+        <div class="content-section">
+            <h3>AI and Machine Learning</h3>
+            <p>This section covers various AI and ML concepts for comprehensive testing.</p>
+            
+            <h4>Neural Networks</h4>
+            <p>Neural networks are computing systems inspired by biological neural networks. They consist of interconnected nodes (neurons) that process information and can learn patterns from data through training.</p>
+            
+            <h4>Transfer Learning</h4>
+            <p>Transfer learning is a machine learning technique where a model trained on one task is adapted for a related task. This approach can significantly reduce the amount of training data and time required for new tasks.</p>
+        </div>
+    </div>
+
+    <div class="warning">
+        <h4>⚠️ Important Notes</h4>
+        <ul>
+            <li>You need valid Azure OpenAI credentials to test the full feature</li>
+            <li>The extension requires the "downloads" permission for file saving</li>
+            <li>Content scraping works best on text-heavy pages</li>
+            <li>AI note generation may take 10-30 seconds depending on content length</li>
+        </ul>
+    </div>
+
+    <div class="success">
+        <h4>✅ Success Criteria</h4>
+        <p>If all test phases complete successfully, you should have:</p>
+        <ul>
+            <li>Configured Azure OpenAI integration</li>
+            <li>Generated comprehensive study notes from this page</li>
+            <li>Saved notes as a Markdown file in Downloads folder</li>
+            <li>Verified the complete workflow from bookmark to notes</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🐛 Troubleshooting</h2>
+        
+        <div class="content-section">
+            <h3>Common Issues</h3>
+            <ul>
+                <li><strong>Azure connection fails:</strong> Check API key, endpoint, and deployment name</li>
+                <li><strong>Content scraping fails:</strong> Ensure the page is fully loaded</li>
+                <li><strong>File not saved:</strong> Check Downloads folder permissions</li>
+                <li><strong>Extension not responding:</strong> Reload the extension</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h3>Debug Information</h3>
+            <p>Open browser console (F12) to see detailed logs for:</p>
+            <ul>
+                <li>Azure API calls and responses</li>
+                <li>Content scraping results</li>
+                <li>File saving operations</li>
+                <li>Error messages and stack traces</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Add some dynamic content for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Test page loaded successfully');
+            
+            // Add timestamp for testing
+            const timestamp = new Date().toLocaleString();
+            const timestampDiv = document.createElement('div');
+            timestampDiv.innerHTML = `<p><strong>Page loaded at:</strong> ${timestamp}</p>`;
+            timestampDiv.style.cssText = 'background: #e9ecef; padding: 10px; border-radius: 4px; margin: 20px 0; text-align: center;';
+            document.body.insertBefore(timestampDiv, document.body.firstChild);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Test</title>
+</head>
+<body>
+    <h1>Minimal Test Page</h1>
+    <p>This page should show a floating 📚 button on the right side.</p>
+    
+    <script>
+        console.log('🚀 Minimal test page loaded');
+        console.log('🔍 Looking for floating bookmark icon...');
+        
+        // Check if content script elements exist
+        setTimeout(() => {
+            const toggle = document.querySelector('.smart-bookmarks-toggle');
+            const panel = document.getElementById('smart-bookmarks-panel');
+            
+            console.log('📚 Toggle button found:', !!toggle);
+            console.log('📋 Panel found:', !!panel);
+            
+            if (toggle) {
+                console.log('✅ Floating icon is visible');
+                console.log('Toggle button styles:', window.getComputedStyle(toggle));
+            } else {
+                console.log('❌ Floating icon not found');
+            }
+        }, 2000);
+    </script>
+</body>
+</html> 

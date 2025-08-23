@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bookmark Organizer</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="config.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Smart Bookmarks</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search bookmarks...">
+                <button id="addBookmarkBtn" title="Add current page">+</button>
+                <button id="refreshDataBtn" title="Refresh Data" style="background: #667eea; color: white; border: none; padding: 6px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 8px;">🔄</button>
+                <button id="debugBtn" title="Debug Info" style="background: #ff6b6b; color: white; border: none; padding: 6px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 8px;">🐛</button>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="categories">
+                <span>📁 Categories</span>
+            </button>
+            <button class="tab" data-tab="recent">
+                <span>⏰ Recent</span>
+            </button>
+            <button class="tab" data-tab="related">
+                <span>🔗 Related</span>
+            </button>
+            <button class="tab" data-tab="settings">
+                <span>⚙️ Settings</span>
+            </button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Categories Tab -->
+            <div id="categories" class="tab-pane active">
+                <div class="category-list" id="categoryList">
+                    <!-- Categories will be populated here -->
+                </div>
+                <button id="addCategoryBtn" class="add-category-btn">+ Add Category</button>
+                
+                <!-- Debug Info Section -->
+                <div id="debugDetails" style="display: none; margin-top: 20px; padding: 15px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px;">
+                    <h4>🐛 Debug Information</h4>
+                    <div id="debugContent">
+                        <p><strong>Categories:</strong> <span id="debugCategories">Loading...</span></p>
+                        <p><strong>Bookmarks:</strong> <span id="debugBookmarks">Loading...</span></p>
+                        <p><strong>Event Listeners:</strong> <span id="debugEventListeners">Loading...</span></p>
+                        <button id="testDropdownBtn" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">🧪 Test Dropdown</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Tab -->
+            <div id="recent" class="tab-pane">
+                <div class="bookmark-list" id="recentBookmarks">
+                    <!-- Recent bookmarks will be populated here -->
+                </div>
+            </div>
+
+            <!-- Related Tab -->
+            <div id="related" class="tab-pane">
+                <div class="related-content" id="relatedContent">
+                    <h3>Related Bookmarks</h3>
+                    <p>This tab shows bookmarks related to the current page you're browsing.</p>
+                    <p>Open this popup while on a webpage to see related content.</p>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-pane">
+                <div class="settings-content">
+                    <h3>Processing Settings</h3>
+                    <div class="setting-item">
+                        <label for="processingMode">Bookmark Processing Mode:</label>
+                        <select id="processingMode">
+                            <option value="realtime">Real-time (Instant categorization)</option>
+                            <option value="background">Background (Queue for later)</option>
+                        </select>
+                        <small>Real-time provides instant categorization but may take longer. Background is faster but processes later.</small>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="maxBookmarks">Max Bookmarks per Category:</label>
+                        <input type="number" id="maxBookmarks" value="25" min="10" max="100">
+                        <small>Categories with more bookmarks will be automatically split into sub-categories.</small>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="relevanceThreshold">Relevance Threshold:</label>
+                        <input type="range" id="relevanceThreshold" min="0.1" max="0.8" step="0.1" value="0.2">
+                        <span id="thresholdValue">0.2</span>
+                        <small>Lower values show more related bookmarks, higher values show only very relevant ones.</small>
+                    </div>
+                    
+                    <button id="saveSettingsBtn" class="save-settings-btn">Save Settings</button>
+                </div>
+                <div class="settings-section">
+                    <h4>Azure OpenAI Configuration</h4>
+                    <p>Configure Azure OpenAI for AI-powered note generation.</p>
+                    <div class="azure-status" id="azureStatus">
+                        <span class="status-indicator" id="azureStatusIndicator">⚪</span>
+                        <span id="azureStatusText">Not configured</span>
+                    </div>
+                    <button id="configureAzureBtn" class="btn btn-secondary">Configure Azure OpenAI</button>
+                    
+                    <div class="config-loading-section" style="margin-top: 15px;">
+                        <h5>Quick Configuration Loading:</h5>
+                        <div class="config-buttons">
+                            <button id="loadTestConfigBtn" class="btn btn-warning" style="margin-right: 8px;">🧪 Load Test Config</button>
+                            <button id="loadDevConfigBtn" class="btn btn-info" style="margin-right: 8px;">🔧 Load Dev Config</button>
+                            <button id="loadProdConfigBtn" class="btn btn-success">🚀 Load Prod Config</button>
+                        </div>
+                        <small style="color: #666; display: block; margin-top: 8px;">
+                            Load pre-configured Azure OpenAI settings from config file
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Category Modal -->
+        <div id="categoryModal" class="modal">
+            <div class="modal-content">
+                <h3>Add New Category</h3>
+                <div class="form-group">
+                    <label for="categoryName">Category Name:</label>
+                    <input type="text" id="categoryName" placeholder="Category name (e.g., AI, System Design)">
+                </div>
+                <div class="form-group">
+                    <label for="categoryType">Category Type:</label>
+                    <select id="categoryType">
+                        <option value="main">Main Category</option>
+                        <option value="sub">Sub Category</option>
+                    </select>
+                </div>
+                <div class="form-group" id="parentCategoryGroup" style="display: none;">
+                    <label for="parentCategory">Parent Category:</label>
+                    <select id="parentCategory">
+                        <!-- Parent categories will be populated here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="categoryKeywords">Keywords (comma separated):</label>
+                    <input type="text" id="categoryKeywords" placeholder="artificial intelligence, machine learning, AI, ML">
+                    <small>These keywords help auto-categorize bookmarks</small>
+                </div>
+                <div class="modal-buttons">
+                    <button id="saveCategoryBtn">Save</button>
+                    <button id="cancelCategoryBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Bookmark Modal -->
+        <div id="bookmarkModal" class="modal">
+            <div class="modal-content">
+                <h3>Add Bookmark</h3>
+                <div class="form-group">
+                    <label for="bookmarkTitle">Title:</label>
+                    <input type="text" id="bookmarkTitle" placeholder="Page title">
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkUrl">URL:</label>
+                    <input type="text" id="bookmarkUrl" placeholder="Page URL">
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkCategory">Category:</label>
+                    <select id="bookmarkCategory" required>
+                        <option value="">Auto-detect (Recommended)</option>
+                        <option value="others">Others</option>
+                    </select>
+                    <div id="editCategoryGroup" style="display: none; margin-top: 10px;">
+                        <label for="editCategoryName">Edit Category Name:</label>
+                        <input type="text" id="editCategoryName" placeholder="Enter custom category name">
+                        <small style="color: #666;">Leave empty to use auto-suggested name</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkNotes">Notes:</label>
+                    <textarea id="bookmarkNotes" placeholder="Auto-generated description will appear here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkProcessingMode">Processing Mode:</label>
+                    <select id="bookmarkProcessingMode">
+                        <option value="realtime">Real-time Analysis</option>
+                        <option value="background">Background Processing</option>
+                    </select>
+                    <small>Real-time provides instant categorization, background is faster</small>
+                </div>
+                <div class="modal-buttons">
+                    <button id="saveBookmarkBtn">Save Bookmark</button>
+                    <button id="cancelBookmarkBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Status Modal -->
+        <div id="processingModal" class="modal">
+            <div class="modal-content">
+                <h3>Processing Bookmark</h3>
+                <div class="processing-status">
+                    <div class="spinner"></div>
+                    <p id="processingMessage">Analyzing content...</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generate Notes Modal -->
+    <div id="generateNotesModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Generate AI Notes</h3>
+                <span class="close" id="closeGenerateNotesModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="notesGenerationContent">
+                    <!-- Content will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Azure OpenAI Settings Modal -->
+    <div id="azureSettingsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Azure OpenAI Configuration</h3>
+                <span class="close" id="closeAzureSettingsModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="azureApiKey">Azure OpenAI API Key:</label>
+                    <input type="password" id="azureApiKey" placeholder="Enter your Azure OpenAI API key">
+                </div>
+                <div class="form-group">
+                    <label for="azureEndpoint">Azure OpenAI Endpoint:</label>
+                    <input type="url" id="azureEndpoint" placeholder="https://your-resource.openai.azure.com/">
+                </div>
+                <div class="form-group">
+                    <label for="azureModel">Model Name:</label>
+                    <input type="text" id="azureModel" placeholder="Enter your model name (e.g., gpt-4, gpt-35-turbo)">
+                    <small>Enter the exact model name as configured in your Azure OpenAI deployment</small>
+                </div>
+                <div class="form-group">
+                    <label for="azureDeployment">Deployment Name:</label>
+                    <input type="text" id="azureDeployment" placeholder="Enter your deployment name">
+                </div>
+                <div class="form-group">
+                    <label for="azureApiVersion">API Version:</label>
+                    <input type="text" id="azureApiVersion" placeholder="e.g., 2025-01-01-preview">
+                    <small>Enter the API version (e.g., 2025-01-01-preview, 2024-05-01-preview)</small>
+                </div>
+                <div class="form-actions">
+                    <button id="saveAzureSettings" class="btn btn-primary">Save Settings</button>
+                    <button id="testAzureConnection" class="btn btn-secondary">Test Connection</button>
+                    <button id="testConfigBtn" class="btn btn-secondary" style="background: #ffc107; color: #333;">🧪 Load Test Config</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 
