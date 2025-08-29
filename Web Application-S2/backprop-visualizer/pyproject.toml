@@ -1,0 +1,10 @@
+[project]
+name = "neuralinsight"
+version = "1.0.0"
+description = "Advanced Neural Network Visualization & Learning Platform"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.1.2",
+    "matplotlib>=3.10.5",
+    "numpy>=2.3.2",
+]

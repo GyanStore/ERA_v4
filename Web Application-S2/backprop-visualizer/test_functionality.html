@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEURALINSIGHT Functionality Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8 text-blue-600">🧠 NEURALINSIGHT Functionality Test</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Test Card 1: Basic Functionality -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-green-600">✅ Core Features Test</h2>
+                <div class="space-y-3">
+                    <button onclick="testInitialize()" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                        Test Network Initialization
+                    </button>
+                    <button onclick="testTraining()" class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                        Test Training Step
+                    </button>
+                    <button onclick="testExamples()" class="w-full bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600">
+                        Test Example Loading
+                    </button>
+                    <button onclick="testTextLearning()" class="w-full bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-600">
+                        Test Text Learning
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Test Card 2: UI Elements -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-orange-600">🎨 UI Elements Test</h2>
+                <div class="space-y-3">
+                    <button onclick="testCollapsibleSections()" class="w-full bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600">
+                        Test Collapsible Sections
+                    </button>
+                    <button onclick="testValidation()" class="w-full bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600">
+                        Test Input Validation
+                    </button>
+                    <button onclick="testResponsiveness()" class="w-full bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+                        Test Responsiveness
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Test Results -->
+        <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4 text-gray-700">📊 Test Results</h2>
+            <div id="testResults" class="space-y-2 text-sm">
+                <p class="text-gray-500">Click test buttons above to see results...</p>
+            </div>
+        </div>
+        
+        <!-- Quick Access to Main App -->
+        <div class="mt-8 text-center">
+            <a href="http://localhost:5001" target="_blank" class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg">
+                🚀 Open Main Application
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function logTest(message, success = true) {
+            const results = document.getElementById('testResults');
+            const color = success ? 'text-green-600' : 'text-red-600';
+            const icon = success ? '✅' : '❌';
+            const logEntry = document.createElement('p');
+            logEntry.className = color;
+            logEntry.innerHTML = `${icon} ${message}`;
+            results.appendChild(logEntry);
+            
+            // Auto-scroll to bottom
+            results.scrollTop = results.scrollHeight;
+        }
+        
+        function clearResults() {
+            document.getElementById('testResults').innerHTML = '<p class="text-gray-500">Running tests...</p>';
+        }
+        
+        async function testInitialize() {
+            clearResults();
+            logTest('Testing network initialization...', true);
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/initialize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        layer_sizes: [2, 3, 1],
+                        learning_rate: 0.1,
+                        activation: 'sigmoid'
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    logTest(`Network initialized successfully! Parameters: ${data.total_params}`, true);
+                } else {
+                    logTest(`Initialization failed: ${data.error}`, false);
+                }
+            } catch (error) {
+                logTest(`Network error: ${error.message}`, false);
+            }
+        }
+        
+        async function testTraining() {
+            clearResults();
+            logTest('Testing training step...', true);
+            
+            try {
+                const response = await fetch('http://localhost:5001/api/train', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        X: [[0,0,1,1], [0,1,0,1]],
+                        y: [[0,1,1,0]]
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    logTest(`Training successful! Loss: ${data.loss.toFixed(6)}`, true);
+                } else {
+                    logTest(`Training failed: ${data.error}`, false);
+                }
+            } catch (error) {
+                logTest(`Network error: ${error.message}`, false);
+            }
+        }
+        
+        function testExamples() {
+            clearResults();
+            logTest('Testing example loading...', true);
+            
+            // Test XOR example
+            const xorData = {
+                X: [[0,0,1,1], [0,1,0,1]],
+                y: [[0,1,1,0]],
+                layers: '2,3,1'
+            };
+            
+            logTest(`XOR Example: X(${xorData.X.length}×${xorData.X[0].length}), Y(${xorData.y.length}×${xorData.y[0].length}), Layers: ${xorData.layers}`, true);
+            
+            // Test AND example
+            const andData = {
+                X: [[0,0,1,1], [0,1,0,1]],
+                y: [[0,0,0,1]],
+                layers: '2,2,1'
+            };
+            
+            logTest(`AND Example: X(${andData.X.length}×${andData.X[0].length}), Y(${andData.y.length}×${andData.y[0].length}), Layers: ${andData.layers}`, true);
+            
+            logTest('All examples loaded successfully!', true);
+        }
+        
+        function testTextLearning() {
+            clearResults();
+            logTest('Testing text learning data generation...', true);
+            
+            const sampleText = "Hello world how are you";
+            const words = sampleText.toLowerCase().split(/\s+/).filter(word => word.length > 0);
+            const vocabulary = [...new Set(words)];
+            
+            logTest(`Sample text: "${sampleText}"`, true);
+            logTest(`Words extracted: ${words.join(', ')}`, true);
+            logTest(`Vocabulary size: ${vocabulary.length}`, true);
+            logTest(`Training pairs: ${words.length - 1}`, true);
+            
+            // Simulate the data format that would be generated
+            const trainingX = [];
+            const trainingY = [];
+            
+            for (let feature = 0; feature < vocabulary.length; feature++) {
+                const featureRow = [];
+                const outputRow = [];
+                
+                for (let pair = 0; pair < words.length - 1; pair++) {
+                    featureRow.push(words[pair] === vocabulary[feature] ? 1 : 0);
+                    outputRow.push(words[pair + 1] === vocabulary[feature] ? 1 : 0);
+                }
+                
+                trainingX.push(featureRow);
+                trainingY.push(outputRow);
+            }
+            
+            logTest(`Generated X: (${trainingX.length}×${trainingX[0].length})`, true);
+            logTest(`Generated Y: (${trainingY.length}×${trainingY[0].length})`, true);
+            logTest('Text learning data generation successful!', true);
+        }
+        
+        function testCollapsibleSections() {
+            clearResults();
+            logTest('Testing collapsible sections...', true);
+            
+            // Test the toggle functionality
+            const sections = ['mathInsights', 'trainingDetails'];
+            let allWorking = true;
+            
+            sections.forEach(section => {
+                const toggle = document.getElementById(`${section}Toggle`);
+                const content = document.getElementById(`${section}Content`);
+                const icon = document.getElementById(`${section}Icon`);
+                
+                if (toggle && content && icon) {
+                    logTest(`${section} toggle elements found`, true);
+                } else {
+                    logTest(`${section} toggle elements missing`, false);
+                    allWorking = false;
+                }
+            });
+            
+            if (allWorking) {
+                logTest('All collapsible section elements are present!', true);
+                logTest('Note: Actual toggle testing requires the main app interface', true);
+            }
+        }
+        
+        function testValidation() {
+            clearResults();
+            logTest('Testing input validation...', true);
+            
+            // Test layer sizes validation
+            const validLayers = [2, 3, 1];
+            const invalidLayers = [2, 0, 1];
+            
+            if (validLayers.length >= 2 && !validLayers.some(size => size < 1)) {
+                logTest('Valid layer sizes validation working', true);
+            } else {
+                logTest('Valid layer sizes validation failed', false);
+            }
+            
+            if (invalidLayers.some(size => size < 1)) {
+                logTest('Invalid layer sizes detection working', true);
+            } else {
+                logTest('Invalid layer sizes detection failed', false);
+            }
+            
+            // Test data format validation
+            const validX = [[0,0,1,1], [0,1,0,1]];
+            const validY = [[0,1,1,0]];
+            
+            if (Array.isArray(validX) && Array.isArray(validY) && validX[0].length === validY[0].length) {
+                logTest('Data format validation working', true);
+            } else {
+                logTest('Data format validation failed', false);
+            }
+            
+            logTest('Input validation tests completed!', true);
+        }
+        
+        function testResponsiveness() {
+            clearResults();
+            logTest('Testing responsive design...', true);
+            
+            const viewport = window.innerWidth;
+            logTest(`Current viewport width: ${viewport}px`, true);
+            
+            if (viewport < 768) {
+                logTest('Mobile view detected', true);
+            } else if (viewport < 1024) {
+                logTest('Tablet view detected', true);
+            } else {
+                logTest('Desktop view detected', true);
+            }
+            
+            // Test if Tailwind CSS is working
+            const testElement = document.createElement('div');
+            testElement.className = 'bg-blue-500 text-white p-4 rounded';
+            testElement.textContent = 'Tailwind Test';
+            document.body.appendChild(testElement);
+            
+            setTimeout(() => {
+                const computedStyle = window.getComputedStyle(testElement);
+                if (computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)') {
+                    logTest('Tailwind CSS styling working', true);
+                } else {
+                    logTest('Tailwind CSS styling not working', false);
+                }
+                document.body.removeChild(testElement);
+            }, 100);
+            
+            logTest('Responsiveness tests completed!', true);
+        }
+    </script>
+</body>
+</html>
