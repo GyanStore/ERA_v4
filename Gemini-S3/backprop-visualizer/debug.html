@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - NEURALINSIGHT</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Debug NEURALINSIGHT</h1>
+    
+    <div>
+        <label>Layer Sizes:</label>
+        <input type="text" id="layerSizes" value="2,3,1">
+    </div>
+    
+    <div>
+        <label>Learning Rate:</label>
+        <input type="number" id="learningRate" value="0.1">
+    </div>
+    
+    <div>
+        <label>Activation:</label>
+        <select id="activationFunction">
+            <option value="sigmoid">Sigmoid</option>
+            <option value="tanh">Tanh</option>
+            <option value="relu">ReLU</option>
+        </select>
+    </div>
+    
+    <div>
+        <label>Training X:</label>
+        <textarea id="trainingX">[[0,0,1,1], [0,1,0,1]]</textarea>
+    </div>
+    
+    <div>
+        <label>Training Y:</label>
+        <textarea id="trainingY">[[0,1,1,0]]</textarea>
+    </div>
+    
+    <button id="initializeBtn">Initialize Network</button>
+    <button id="trainBtn">Train Step</button>
+    <button id="resetBtn">Reset</button>
+    
+    <div id="status"></div>
+    
+    <script src="/static/app.js"></script>
+    <script>
+        // Test the visualizer
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded');
+            
+            if (window.visualizer) {
+                console.log('Visualizer created successfully');
+                console.log('Visualizer methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(window.visualizer)));
+            } else {
+                console.error('Visualizer not created');
+            }
+            
+            // Test button clicks
+            document.getElementById('initializeBtn').addEventListener('click', () => {
+                console.log('Initialize button clicked');
+                if (window.visualizer) {
+                    console.log('Calling initializeNetwork');
+                    window.visualizer.initializeNetwork();
+                } else {
+                    console.error('No visualizer available');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
