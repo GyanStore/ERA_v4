@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-from model import create_model
+from model import create_final_model
 import numpy as np
 
 def test_model_architecture():
@@ -9,7 +9,7 @@ def test_model_architecture():
     print("="*50)
     
     # Create model
-    model = create_model()
+    model = create_final_model()
     
     # Test input shape
     dummy_input = torch.randn(1, 1, 28, 28)
@@ -36,10 +36,10 @@ def test_model_architecture():
     param_count = model.count_parameters()
     print(f"Total parameters: {param_count:,}")
     
-    if param_count < 25000:
+    if param_count < 20000:
         print("✓ Parameter count is within limit")
     else:
-        print("✗ Parameter count exceeds 25,000 limit")
+        print("✗ Parameter count exceeds 20,000 limit")
     
     print("\nModel Architecture:")
     print(model)
@@ -51,7 +51,7 @@ def analyze_model_layers():
     print("\nDetailed Parameter Analysis:")
     print("="*50)
     
-    model = create_model()
+    model = create_final_model()
     total_params = 0
     
     for name, param in model.named_parameters():
@@ -76,5 +76,5 @@ if __name__ == "__main__":
     print("="*50)
     print(f"✓ Model created successfully")
     print(f"✓ Total parameters: {total_params:,}")
-    print(f"✓ Parameter limit check: {'PASSED' if total_params < 25000 else 'FAILED'}")
+    print(f"✓ Parameter limit check: {'PASSED' if total_params < 20000 else 'FAILED'}")
     print(f"✓ Ready for training!")
