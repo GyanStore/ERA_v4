@@ -181,9 +181,6 @@ Epochs ≤ 20: ✅ PASS (15)
 
 ---
 
-## 🔗 Repository Link
-
-**GitHub Repository**: https://github.com/GyanStore/ERA_v4/tree/mnist-optim-s5
 
 ## 🎯 Final Validation Results
 
@@ -192,6 +189,4 @@ Epochs ≤ 20: ✅ PASS (15)
 **Parameters**: 18,894
 **Epochs**: 15
 
----
 
-_Generated automatically on 2025-01-14 15:30:27_
