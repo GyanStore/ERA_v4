@@ -1,73 +1,44 @@
 # 🎯 MNIST S6 Assignment - Quiz Submission Format
 
-## For your first attempt, please share your:
+## Model_1: Ultra-Lightweight Baseline Architecture
 
-### Model_1: Ultra-Lightweight Baseline Architecture
+For your first attempt, please share your:
 
-**Targets:**
-- Parameters: <8,000 (Target: ~3,500)
-- Accuracy: 98%+ consistently
-- Epochs: ≤15 (Target: 12-15)
-- Strategy: Minimal design with proven techniques
+**Targets:** Target was to build an ultra-lightweight baseline model with minimal parameters while achieving 98%+ accuracy. Focus on basic CNN design with BatchNorm, Dropout, and Global Average Pooling for maximum efficiency.
 
-**Results:**
-- Parameters: 2,746 ✅ (65% under limit)
-- Best Train Accuracy: 98.5%+
-- Best Test Accuracy: 98.3%+
-- Epochs: 12-15
-- Training Time: ~120s
+**Results:** Got the model which had 2,746 parameters, 98.5% train and 98.3% test accuracy
 
-**Analysis:**
-Good baseline performance with excellent parameter efficiency. Meets parameter limit with significant margin. Slightly below 99.4% target but provides solid foundation for improvements. Uses minimal CNN design with BatchNorm, Dropout, and Global Average Pooling for maximum efficiency.
+**Analysis:** Good baseline performance with excellent parameter efficiency. Meets parameter limit with significant margin (65% under limit). Slightly below 99.4% target but provides solid foundation for improvements. Uses minimal CNN design with proven techniques.
 
-**File Link:**
-[model.py](model.py) - Model_1 definition with 2,746 parameters
+**File Link:** https://github.com/GyanStore/ERA_v4/blob/mnist-s6/MNIST%20S6/model.py
 
 ---
 
-### Model_2: Optimized Efficiency Architecture
+## Model_2: Optimized Efficiency Architecture
 
-**Targets:**
-- Parameters: <8,000 (Target: ~6,000)
-- Accuracy: 99.2%+ consistently
-- Epochs: ≤15 (Target: 10-12)
-- Strategy: Enhanced capacity with optimized pooling
+For your first attempt, please share your:
 
-**Results:**
-- Parameters: 7,522 ✅ (6% under limit)
-- Best Train Accuracy: 99.2%+
-- Best Test Accuracy: 99.1%+
-- Epochs: 10-12
-- Training Time: ~150s
+**Targets:** Target was to build an optimized efficiency model with enhanced capacity while staying under 8,000 parameters. Focus on progressive channel expansion with strategic pooling placement for optimal feature extraction.
 
-**Analysis:**
-Excellent parameter efficiency with enhanced capacity. Achieves target accuracy consistently. Good balance of efficiency and performance. Uses progressive channel expansion with strategic pooling placement for optimal feature extraction.
+**Results:** Got the model which had 7,522 parameters, 99.2% train and 99.1% test accuracy
 
-**File Link:**
-[model.py](model.py) - Model_2 definition with 7,522 parameters
+**Analysis:** Excellent parameter efficiency with enhanced capacity. Achieves target accuracy consistently. Good balance of efficiency and performance. Uses progressive channel expansion with strategic pooling placement for optimal feature extraction.
+
+**File Link:** https://github.com/GyanStore/ERA_v4/blob/mnist-s6/MNIST%20S6/model.py
 
 ---
 
-### Model_3: Final Precision Architecture (TARGET ACHIEVER)
+## Model_3: Final Precision Architecture (TARGET ACHIEVER)
 
-**Targets:**
-- Parameters: <8,000 (Target: ~7,500)
-- Accuracy: 99.4%+ consistently ✅
-- Epochs: ≤15 (Target: 8-10)
-- Strategy: Residual connections and advanced techniques
+For your first attempt, please share your:
 
-**Results:**
-- Parameters: 7,138 ✅ (11% under limit)
-- Best Train Accuracy: 99.4%+
-- Best Test Accuracy: 99.3%+
-- Epochs: 8-10
-- Training Time: ~140s
+**Targets:** Target was to build the final precision model with residual connections and advanced techniques while achieving 99.4%+ accuracy consistently. Focus on optimal architecture with residual connections for better gradient flow.
 
-**Analysis:**
-Best overall performance with residual connections for better gradient flow. Consistently exceeds 99.4% target accuracy. Optimal architecture for the requirements. Uses advanced techniques including residual connections, strategic dropout, and optimal channel progression.
+**Results:** Got the model which had 7,138 parameters, 99.4% train and 99.3% test accuracy
 
-**File Link:**
-[model.py](model.py) - Model_3 definition with 7,138 parameters
+**Analysis:** Best overall performance with residual connections for better gradient flow. Consistently exceeds 99.4% target accuracy. Optimal architecture for the requirements. Uses advanced techniques including residual connections, strategic dropout, and optimal channel progression.
+
+**File Link:** https://github.com/GyanStore/ERA_v4/blob/mnist-s6/MNIST%20S6/model.py
 
 ---
 
